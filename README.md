@@ -24,6 +24,18 @@ From the main panel you can see information from:
 * Blocks, Containers, uiComponents
 * Profiler
 
+#### Theme, Controller and Global information: 
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/1.png" width="480" />
+
+#### Blocks / Containers information:
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/2.png" width="480" />
+
+#### uiComponents information:
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/3.png" width="480" />
+
+#### Profiler information:
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/5.png" width="480" />
+
 ### Item Information
 Magento Chrome Toolbar is integrated woth Chrome Inspector.
 
@@ -37,6 +49,9 @@ By selecting an item in you page you can see:
 * Cache information
 * uiComponent information
 * Container information
+
+#### Inspector integration
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/main2.png" width="480" />
 
 ### PhpStorm Integration
 Magento Chrome Toolbar can be integrated with **PhpStorm** to directly open the template file you wish to edit.
