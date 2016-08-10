@@ -1,0 +1,103 @@
+/**
+ * IDEALIAGroup srl
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@idealiagroup.com so we can send you a copy immediately.
+ *
+ * @category   MSP
+ * @package    MSP_DevTools
+ * @copyright  Copyright (c) 2016 IDEALIAGroup srl (http://www.idealiagroup.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+body, th, td {
+    font-size: 11px;
+}
+
+body {
+    padding: 5px;
+}
+
+.tab-pane {
+    padding: 10px;
+    /*border-left: 1px solid #ddd;*/
+    /*border-right: 1px solid #ddd;*/
+    /*border-bottom: 1px solid #ddd;*/
+    background: #ffffff;
+}
+
+#reload {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.runlevel {
+    display: none;
+}
+
+td.show-details {
+    width: 2em;
+    cursor: pointer;
+}
+
+.table-responsive {
+    border: 0 !important;
+}
+
+/*table.dataTable,*/
+/*table.dataTable th,*/
+/*table.dataTable td {*/
+    /*-webkit-box-sizing: content-box;*/
+    /*-moz-box-sizing: content-box;*/
+    /*box-sizing: content-box;*/
+/*}*/
+
+table td {
+    word-break: break-all !important;
+    word-wrap: break-word !important;
+}
+
+.nav > li > a {
+    padding: 5px !important;
+    border-radius: 0 !important;
+    font-weight: bold;
+    color: #296891;
+}
+
+table .glyphicon {
+    color: #fff;
+    background: #296891;
+    border-radius: 2px;
+    padding: 4px;
+}
+
+.navbar-brand {
+    padding: 10px;
+}
+
+
+.navbar h4 {
+    padding-top: 5px;
+}
+
+.navbar h4 small {
+    font-size: 12px;
+}
+
+.navbar h4 small a {
+    color: #666666;
+    text-decoration: none;
+    padding-top: 10px;
+}
+
+#inspected-item {
+    overflow: scroll;
+}
