@@ -5,7 +5,7 @@
 This extension allows you to **quickly access** the information you need to debug your Magento performances,
 to build your new theme or to modify an existing one.
 
-## How can I instal it?
+## How can I install it?
 You can both download it from here or simpy visit the **[Chrome WebStore][1]**
 
 > Before you can use this extension on any Magento website, you need to install MSP_DevTools for Magento 1 or for Magento 2.
