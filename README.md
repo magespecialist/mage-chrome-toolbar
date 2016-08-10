@@ -10,6 +10,12 @@ You can both download it from here or simpy visit the **[Chrome WebStore][1]**
 
 > Before you can use this extension on any Magento website, you need to install MSP_DevTools for Magento 1 or for Magento 2.
 
+### Installing on Magento 2:
+* Quick way: `composer install msp/devtools`
+* Long way: Download package from GitHub: https://github.com/magespecialist/m2-MSP_DevTools
+
+> Remember to enable it from Magento Backend
+
 ## How does it work?
 You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
 
