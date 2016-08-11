@@ -10,16 +10,23 @@ Just install from **[Chrome WebStore][1]**.
 Now you have the Chrome extension, next step is to install and configure the **Magento extension**. 
 
 ### Installing on Magento 1:
-* Download and install extension from: https://github.com/magespecialist/m1-MSP_DevTools
+* Download and unzip in the Magento root: https://github.com/magespecialist/m1-MSP_DevTools/archive/master.zip.
+* Flush your cache.
+* Open Magento backend and go to `System > Configuration > MageSpecialist > DevTools`.
+* Enable devtools and set IP restrictions.
+* Optionally download PhpStorm **Remote Call Plugin** if you wish to integrate PhpStorm.
 
-> Remember to enable it from Magento Backend
+> Source code available on GitHub: https://github.com/magespecialist/m1-MSP_DevTools
 
 ### Installing on Magento 2:
-`composer install msp/devtools`
+* From your CLI run: `composer install msp/devtools`
+* Flush your cache.
+* Turn OFF **Full Page Cache** while you are using DevTools.
+* Open Magento backend and go to `System > Configuration > MageSpecialist > DevTools`.
+* Enable devtools and set IP restrictions.
+* Optionally download PhpStorm **Remote Call Plugin** if you wish to integrate PhpStorm.
 
-Package source is also available on GitHub: https://github.com/magespecialist/m2-MSP_DevTools
-
-> Remember to enable it from Magento Backend
+> Source code available on GitHub: https://github.com/magespecialist/m2-MSP_DevTools
 
 ## How does it work?
 You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
