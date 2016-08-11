@@ -22,7 +22,7 @@ Now you have the Chrome extension, next step is to install and configure the **M
 * From your CLI run: `composer install msp/devtools`
 * Flush your cache.
 * Turn OFF **Full Page Cache** while you are using DevTools.
-* Open Magento backend and go to `System > Configuration > MageSpecialist > DevTools`.
+* Open Magento backend and go to `Store > Configuration > MageSpecialist > DevTools`.
 * Enable devtools and set IP restrictions.
 * Optionally download PhpStorm **Remote Call Plugin** if you wish to integrate PhpStorm.
 
