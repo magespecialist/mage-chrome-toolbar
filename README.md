@@ -6,16 +6,18 @@ This extension allows you to **quickly access** the information you need to debu
 to build your new theme or to modify an existing one.
 
 ## How can I install it?
-You can both download it from here or simpy visit the **[Chrome WebStore][1]**
-
-> Before you can use this extension on any Magento website, you need to install MSP_DevTools for Magento 1 or for Magento 2.
+Just install from **[Chrome WebStore][1]**.
+Now you have the Chrome extension, next step is to install and configure the **Magento extension**. 
 
 ### Installing on Magento 1:
 * Download and install extension from: https://github.com/magespecialist/m1-MSP_DevTools
 
+> Remember to enable it from Magento Backend
+
 ### Installing on Magento 2:
-* Quick way: `composer install msp/devtools`
-* Long way: Download package from GitHub: https://github.com/magespecialist/m2-MSP_DevTools
+`composer install msp/devtools`
+
+Package source is also available on GitHub: https://github.com/magespecialist/m2-MSP_DevTools
 
 > Remember to enable it from Magento Backend
 
@@ -65,7 +67,7 @@ By selecting an item in you page you can see:
 ### PhpStorm Integration
 Magento Chrome Toolbar can be integrated with **PhpStorm** to directly open the template file you wish to edit.
 
-> You need to install **Remote Call Plugin** in PhpStorm and enable the feature from Magento Backend.
+> You need to install **Remote Call Plugin** in PhpStorm, then enable the feature from Magento Backend.
 
 
 [1]: https://chrome.google.com/webstore/detail/magespecialist-devtools-f/odbnbnenehdodpnebgldhhmicbnlmapj?authuser=3
