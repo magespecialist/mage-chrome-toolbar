@@ -28,6 +28,20 @@ Now you have the Chrome extension, next step is to install and configure the **M
 
 > Source code available on GitHub: https://github.com/magespecialist/m2-MSP_DevTools
 
+#### Enabling profiler feature on Magento 2:
+If you wish to enable the profiler feature you need to set the `MAGE_PROFILER` server variable to `MSP\DevTools\Profiler\Driver\Standard\Output\DevTools`.
+You can do it in several ways:
+
+##### Editing `index.php`:
+Add the following line at the very beginning on `index.php` file:
+
+`$_SERVER['MAGE_PROFILER']='MSP\DevTools\Profiler\Driver\Standard\Output\DevTools';`
+ 
+##### Editing `.htaccess` file
+Add the following line to your `.haccess` file:
+
+`SetEnv MAGE_PROFILER MSP\DevTools\Profiler\Driver\Standard\Output\DevTools`
+
 ## How does it work?
 You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
 
