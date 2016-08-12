@@ -29,7 +29,38 @@ function pingForUpdate()
     });
 }
 
+function addDocumentInformation()
+{
+    var blocks = {};
+
+    $('*').contents().filter(function(){
+        return this.nodeType == 8;
+    }).each(function(i, e) {
+        var nodeValue = this.nodeValue;
+
+        var m = nodeValue.match(/\s*(\/?)MSPDEVTOOLS\[(\w+)\]\s*/);
+        if (m) {
+            var close = m[1];
+            var blockId = m[2];
+
+            if (close) {
+                blocks[blockId].stop = this;
+            } else {
+                blocks[blockId] = { start: this };
+            }
+        }
+    });
+
+    for (var block in blocks) {
+        if (blocks.hasOwnProperty(block)) {
+            var $piece = $(blocks[block].start).nextUntil(blocks[block].stop);
+            $piece.attr('data-mspdevtools', block);
+        }
+    }
+}
+
 $(function () {
+    addDocumentInformation();
     pingForUpdate();
 
     port.postMessage({
