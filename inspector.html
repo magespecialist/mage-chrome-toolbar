@@ -43,10 +43,13 @@
             </div>
         </nav>
 
-        <button class="btn btn-sm btn-primary" id="phpstorm-link">
+        <button class="btn btn-sm btn-primary" id="phpstorm-link" style="display: none">
             <span class="glyphicon glyphicon-file"></span>&nbsp;Open in PhpStorm
         </button>
         <br />
-        <div id="inspected-item"></div>
+        <div id="inspected-item" style="display: none"></div>
+        <div id="missing-item" style="display: none">
+            <div class="alert alert-warning" role="alert">Block information non available, turn off blocks cache or FPC.</div>
+        </div>
     </body>
 </html>

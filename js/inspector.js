@@ -21,31 +21,45 @@ function inspectItem()
 {
     function onSelectionChange(el)
     {
-        if (window.mspDevTools['blocks']) {
-            var $el = jQuery(el);
+        if (!window.mspDevTools.hasOwnProperty('blocks')) {
+            return 'no-data';
+        }
+        
+        var fetchAttr = function (node, attr) {
+            while(node) {
+                try {
+                    var attrValue = node.getAttribute(attr);
 
-            // Block search
-            var uiBlockId = $el.attr('data-mspdevtools-ui');
-            if (!uiBlockId) {
-                uiBlockId = $el.parents('[data-mspdevtools-ui]').first().attr('data-mspdevtools-ui');
+                    if (attrValue) {
+                        return attrValue;
+                    }
+                } catch(e) {}
+
+                node = node.parentNode;
+            }
+        };
+
+        // Block search
+        var uiBlockId = fetchAttr(el, 'data-mspdevtools-ui');
+        if (uiBlockId) {
+            if (!window.mspDevTools['uiComponents'].hasOwnProperty(uiBlockId)) {
+                return 'missing';
             }
 
-            if (uiBlockId) {
-                if (window.mspDevTools['uiComponents'][uiBlockId]) {
-                    return window.mspDevTools['uiComponents'][uiBlockId];
-                }
+            if (window.mspDevTools['uiComponents'][uiBlockId]) {
+                return window.mspDevTools['uiComponents'][uiBlockId];
+            }
+        }
+
+        // Block search
+        var blockId = fetchAttr(el, 'data-mspdevtools');
+        if (blockId) {
+            if (!window.mspDevTools['blocks'].hasOwnProperty(blockId)) {
+                return 'missing';
             }
 
-            // Block search
-            var blockId = $el.attr('data-mspdevtools');
-            if (!blockId) {
-                blockId = $el.parents('[data-mspdevtools]').first().attr('data-mspdevtools');
-            }
-
-            if (blockId) {
-                if (window.mspDevTools['blocks'][blockId]) {
-                    return window.mspDevTools['blocks'][blockId];
-                }
+            if (window.mspDevTools['blocks'][blockId]) {
+                return window.mspDevTools['blocks'][blockId];
             }
         }
 
@@ -53,12 +67,25 @@ function inspectItem()
     }
 
     chrome.devtools.inspectedWindow.eval('(' + onSelectionChange.toString() + ')($0)', {}, function (res) {
-        var phpStormUrl = res['phpstorm_url'];
+        var phpStormUrl = '';
 
-        delete res['id'];
-        delete res['phpstorm_url'];
+        if (res == 'missing') {
+            $('#inspected-item').css('display', 'none');
+            $('#missing-item').css('display', 'block');
+        } else if (res == 'no-data') {
+            $('#inspected-item').css('display', 'none');
+            $('#missing-item').css('display', 'none');
+        } else {
 
-        $('#inspected-item').html(new JSONFormatter(res).render());
+            phpStormUrl = res['phpstorm_url'];
+
+            delete res['id'];
+            delete res['phpstorm_url'];
+
+            $('#inspected-item').css('display', 'block');
+            $('#missing-item').css('display', 'none');
+            $('#inspected-item').html(new JSONFormatter(res).render());
+        }
 
         $('#phpstorm-link').css('display', phpStormUrl ? 'block' : 'none');
         $('#phpstorm-link').attr('data-phpstorm-url', phpStormUrl);
