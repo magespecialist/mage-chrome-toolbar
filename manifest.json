@@ -1,9 +1,9 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name": "MageSpecialist DevTools for Magento",
   "description": "This extension can be used with MSP_DevTools module for Magento",
-  "version": "1.6",
+  "version": "1.7",
 
   "icons": {
     "16": "images/icon16x16.png",
