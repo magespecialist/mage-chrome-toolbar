@@ -21,7 +21,7 @@ This package is also available on **packagist** for Magento 1 composer installat
 > Source code available on GitHub: https://github.com/magespecialist/m1-MSP_DevTools
 
 ### Installing on Magento 2:
-* From your CLI run: `composer install msp/devtools`
+* From your CLI run: `composer require msp/devtools`
 * Flush your cache.
 * Turn OFF **Full Page Cache** while you are using DevTools.
 * Open Magento backend and go to `Store > Configuration > MageSpecialist > DevTools`.
