@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
 
   "name": "MageSpecialist DevTools for Magento",
   "description": "This extension can be used with MSP_DevTools module for Magento",
