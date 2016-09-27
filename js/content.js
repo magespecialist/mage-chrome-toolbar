@@ -31,43 +31,51 @@ function pingForUpdate()
 
 function addDocumentInformation()
 {
-    var blocks = {};
+    var blocksStack = [];
+    $('*').each(function(i, e) {
+        // This avoids security exceptions with iframes
 
-    $('*').contents().filter(function(){
-        return this.nodeType == 8;
-    }).each(function(i, e) {
-        var nodeValue = this.nodeValue;
+        try {
+            $(this).contents().each(function (i, e) {
+                if (this.nodeType == 8) {
+                    var nodeValue = this.nodeValue;
+                    var m = nodeValue.match(/\s*(\/?)MSPDEVTOOLS\[(\w+)\]\s*/);
 
-        var m = nodeValue.match(/\s*(\/?)MSPDEVTOOLS\[(\w+)\]\s*/);
-        if (m) {
-            var close = m[1];
-            var blockId = m[2];
+                    if (m) {
+                        var close = m[1];
+                        var blockId = m[2];
 
-            if (close) {
-                blocks[blockId].stop = this;
-            } else {
-                blocks[blockId] = { start: this };
-            }
-        }
+                        if (close) {
+                            blocksStack.pop();
+                        } else {
+                            blocksStack.push(blockId);
+                        }
+                    }
+                } else if (this.nodeType == 1) {
+                    if (blocksStack.length > 0) {
+                        blockId = blocksStack[blocksStack.length - 1];
+                        $(this).attr('data-mspdevtools', blockId);
+                    }
+                }
+            });
+        } catch (e) {}
     });
-
-    for (var block in blocks) {
-        if (blocks.hasOwnProperty(block)) {
-            var $piece = $(blocks[block].start).nextUntil(blocks[block].stop);
-            $piece.attr('data-mspdevtools', block);
-        }
-    }
 }
 
-$(function () {
-    addDocumentInformation();
-    pingForUpdate();
+port.onMessage.addListener(function(msg, sender, sendResponse) {
+    if (msg.type == 'decorateDom') {
+        addDocumentInformation();
 
-    port.postMessage({
-        type: 'icon',
-        to: 'background',
-        payload: $('[data-mspdevtools]').length > 0 ? 'online' : 'offline'
-    });
+        port.postMessage({
+            type: 'icon',
+            to: 'background',
+            payload: $('[data-mspdevtools]').length > 0 ? 'online' : 'offline'
+        });
+    }
+});
+
+$(function () {
+    pingForUpdate();
 });
 
 window.addEventListener("message", function(event) {

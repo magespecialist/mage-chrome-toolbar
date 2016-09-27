@@ -43,6 +43,15 @@ function sendUpdate()
             to: 'pageinfo',
             payload: res
         });
+
+        if (res) {
+            port.postMessage({
+                tabId: tabId,
+                type: 'decorateDom',
+                to: 'content',
+                payload: res
+            });
+        }
     });
 }
 
