@@ -240,6 +240,9 @@ port.onMessage.addListener(function(msg, sender, sendResponse) {
                     renderTableTab('blocks', msg.payload['blocks']);
                     renderTableTab('ui-components', msg.payload['uiComponents']);
                     renderTableTab('profiler', msg.payload['profiler']);
+                    renderTableTab('logs', msg.payload['profiler']);
+                    renderTableTab('plugins', msg.payload['plugins']);
+                    renderTableTab('queries', msg.payload['queries']);
                 } else {
                     setRunlevel('fpc');
                 }

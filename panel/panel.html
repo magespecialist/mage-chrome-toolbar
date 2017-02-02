@@ -91,6 +91,8 @@
                 <li><a data-toggle="tab" href="#panel-blocks">Blocks</a></li>
                 <li><a data-toggle="tab" href="#panel-ui-components">UI</a></li>
                 <li><a data-toggle="tab" href="#panel-profiler">Profiler</a></li>
+                <li><a data-toggle="tab" href="#panel-plugins">Plugins</a></li>
+                <li><a data-toggle="tab" href="#panel-queries">Queries</a></li>
             </ul>
 
             <div class="tab-content">
@@ -187,6 +189,39 @@
                                     <th data-index="name">Name</th>
                                     <th data-index="proper_time" data-type="int" data-sort="desc">ms (proper)</th>
                                     <th data-index="time" data-type="int">ms (total)</th>
+                                </tr>
+                            </thead>
+
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="fade tab-pane" id="panel-plugins">
+                    <div class="mage-v1 mage-v2">
+                        <table class="table table-condesed table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th data-index="type" data-sort="desc">Type</th>
+                                    <th data-index="plugin">Plugin</th>
+                                </tr>
+                            </thead>
+
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="fade tab-pane" id="panel-queries">
+                    <div class="mage-v1 mage-v2">
+						You should set a new key for $config array in file app/etc/env.php<br/>
+						<pre>$config[db][connection][default][profiler] = 1</pre>
+                        <table class="table table-condesed table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th data-index="sql">SQL</th>
+                                    <th data-index="grade" >Grade</th>
+                                    <th data-index="time" data-sort="desc">Time (ms)</th>
                                 </tr>
                             </thead>
 
