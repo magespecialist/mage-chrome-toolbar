@@ -21,10 +21,37 @@ var dataTables = {};
 
 function getRenderedJson(data) {
     var data2 = data;
+
+    var phpStormLinks = data['phpstorm_links'];
+    var $phpStormLinks = null;
+
+    if (phpStormLinks && phpStormLinks.length) {
+        $phpStormLinks = $('<div></div>').addClass('phpstorm-links');
+        var $dl = $('<dl></dl>');
+
+        $phpStormLinks.append($('<h4></h4>').text('PhpStorm Shortcuts'));
+        $phpStormLinks.append($dl);
+
+        for (var i=0; i<phpStormLinks.length; i++) {
+          $dl.append($('<dt></dt>').text(phpStormLinks[i]['key']));
+          $dl.append($('<dd></dd>').append($('<a></a>')
+            .text(phpStormLinks[i]['file'])
+            .attr('href', phpStormLinks[i]['link'])
+          ));
+        }
+    }
+
     delete data2['id'];
     delete data2['phpstorm_url'];
+    delete data2['phpstorm_links'];
 
-    return new JSONFormatter(data2).render();
+    var $div = $('<div></div>');
+    if ($phpStormLinks) {
+        $div.append($phpStormLinks);
+    }
+    $div.append(new JSONFormatter(data2).render());
+
+    return $div[0];
 }
 
 function renderPropertyTab(tabId, values)
@@ -121,18 +148,36 @@ function renderTableTab(tabId, values)
             } else if (dataType == 'inspect-block') {
                 columnDefs.push({
                     render: function ( data, type, full, meta ) {
-                        return '<a title="Inspect" class="inspect-block" href="' + full['id'] + '">' + data + '</a>';
+                      if (!data) {
+                        return '';
+                      }
+
+                      return '<a title="Inspect" class="inspect-block" href="' + data + '">'
+                        +'<span class="glyphicon glyphicon-eye-open"></span>'
+                        +'</a>';
                     },
                     targets: [i]
                 });
 
+              columnInfo['className'] = 'icon-column';
+              columnInfo['orderable'] = false;
+
             } else if (dataType == 'inspect-ui-component') {
                 columnDefs.push({
                     render: function ( data, type, full, meta ) {
-                        return '<a title="Inspect" class="inspect-ui-component" href="' + full['id'] + '">' + data + '</a>';
+                      if (!data) {
+                        return '';
+                      }
+
+                      return '<a title="Inspect" class="inspect-ui-component" href="' + data + '">'
+                        +'<span class="glyphicon glyphicon-eye-open"></span>'
+                        +'</a>';
                     },
                     targets: [i]
                 });
+
+              columnInfo['className'] = 'icon-column';
+              columnInfo['orderable'] = false;
 
             } else if (dataType == 'phpstorm') {
                 columnDefs.push({
@@ -149,6 +194,7 @@ function renderTableTab(tabId, values)
                 });
 
                 columnInfo['orderable'] = false;
+                columnInfo['className'] = 'icon-column';
             }
 
             columns.push(columnInfo);
@@ -196,7 +242,6 @@ function renderTableTab(tabId, values)
     $('#panel-' + tabId + ' a.inspect-block').click(function (e) {
         e.preventDefault();
         var blockId = $(this).attr('href');
-
         chrome.devtools.inspectedWindow.eval("inspect(jQuery('[data-mspdevtools=" + blockId + "]')[0])");
     });
 
