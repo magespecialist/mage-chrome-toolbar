@@ -248,6 +248,11 @@ port.onMessage.addListener(function(msg, sender, sendResponse) {
                         $('.mage-v2').css('display', 'block');
                     }
 
+                    $('#mage-v2-query-profiler-warning').css('display',
+                      (!msg.payload['queries'] || !msg.payload['queries'].length) ?
+                      'block' : 'none'
+                    );
+
                     renderPropertyTab('general', msg.payload['general']);
                     renderPropertyTab('design', msg.payload['design']);
                     renderTableTab('events', msg.payload['events']);
