@@ -77,14 +77,19 @@ function inspectItem()
             $('#missing-item').css('display', 'none');
         } else {
 
-            phpStormUrl = res['phpstorm_url'];
-
-            delete res['id'];
-            delete res['phpstorm_url'];
-
+          if (res == 'missing') {
+            $('#inspected-item').css('display', 'none');
+            $('#missing-item').css('display', 'block');
+          } else if (res == 'no-data') {
+            $('#inspected-item').css('display', 'none');
+            $('#missing-item').css('display', 'none');
+          } else {
             $('#inspected-item').css('display', 'block');
             $('#missing-item').css('display', 'none');
-            $('#inspected-item').html(new JSONFormatter(res).render());
+            $('#inspected-item').html(getFormattedBlockInfo(res));
+          }
+
+          $(window).resize();
         }
 
         $('#phpstorm-link').css('display', phpStormUrl ? 'block' : 'none');
