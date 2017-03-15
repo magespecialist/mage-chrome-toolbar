@@ -24,7 +24,9 @@ This package is also available on **packagist** for Magento 1 composer installat
 * From your CLI run: `composer require msp/devtools`
 * Flush your cache.
 * Turn OFF **Full Page Cache** while you are using DevTools.
-* Open Magento backend and go to `Store > Configuration > MageSpecialist > DevTools`.
+* Enable MSP_Common and MSP_DevTools modules: `php bin/magento module:enable MSP_Common MSP_DevTools`
+* Upgrade database data & schema: `php bin/magento setup:upgrade`
+* Open Magento backend and go to `Stores > Settings > Configuration > MageSpecialist > DevTools`.
 * Enable devtools and set IP restrictions.
 * Optionally download PhpStorm **Remote Call Plugin** if you wish to integrate PhpStorm.
 
@@ -75,7 +77,7 @@ From the main panel you can see information from:
 <img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/5.png" width="480" />
 
 ### Item Information
-Magento Chrome Toolbar is integrated woth Chrome Inspector.
+Magento Chrome Toolbar is integrated with Chrome Inspector.
 
 By selecting an item in you page you can see:
 
@@ -94,7 +96,7 @@ By selecting an item in you page you can see:
 ### PhpStorm Integration
 Magento Chrome Toolbar can be integrated with **PhpStorm** to directly open the template file you wish to edit.
 
-> You need to install **Remote Call Plugin** in PhpStorm, then enable the feature from Magento Backend.
+> You need to install **Remote Call Plugin** in PhpStorm, then enable the feature from Magento Admin.
 
 
 [1]: https://chrome.google.com/webstore/detail/magespecialist-devtools-f/odbnbnenehdodpnebgldhhmicbnlmapj?authuser=3
