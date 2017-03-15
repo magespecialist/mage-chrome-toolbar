@@ -35,14 +35,18 @@ If you wish to enable the profiler feature you need to set the `MAGE_PROFILER` s
 You can do it in several ways:
 
 ##### Editing `index.php`:
-Add the following line at the very beginning on `index.php` file:
+Add the following line at the very beginning on `index.php` and `pub/index.php` file:
 
-`$_SERVER['MAGE_PROFILER']='MSP\DevTools\Profiler\Driver\Standard\Output\DevTools';`
+`$_SERVER['MAGE_PROFILER'] = [
+    'drivers' => [['output' => 'MSP\DevTools\Profiler\Driver\Standard\Output\DevTools']]
+];`
  
 ##### Editing `.htaccess` file
 Add the following line to your `.haccess` file:
 
 `SetEnv MAGE_PROFILER MSP\DevTools\Profiler\Driver\Standard\Output\DevTools`
+
+**Known Magento bug:** In Magento 2.1.3 (and probably previous version) you may have problems with profiler and ajax calls due to a core bug. If you are getting this kind of problem you should use the "index.php" modification way.
 
 ## How does it work?
 You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
