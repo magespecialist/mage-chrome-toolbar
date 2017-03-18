@@ -53,6 +53,9 @@ Add the following line to your `.haccess` file:
 ## How does it work?
 You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
 
+#### Inspector integration
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/main2.png" width="480" />
+
 ### Global Page Information
 From the main panel you can see information from:
 
@@ -89,9 +92,6 @@ By selecting an item in you page you can see:
 * Cache information
 * uiComponent information
 * Container information
-
-#### Inspector integration
-<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/main2.png" width="480" />
 
 ### PhpStorm Integration
 Magento Chrome Toolbar can be integrated with **PhpStorm** to directly open the template file you wish to edit.
