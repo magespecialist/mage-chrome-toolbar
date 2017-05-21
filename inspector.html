@@ -19,34 +19,42 @@
  */
  -->
 <html>
-    <head>
-        <script src="js/jquery.js"></script>
-        <script src="js/json_formatter.js"></script>
-        <script src="js/inspector.js"></script>
-        <script src="js/block_info.js"></script>
+<head>
+    <script src="js/jquery.js"></script>
+    <script src="js/block_info.js"></script>
+    <script src="js/inspector.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    </head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+</head>
 
-    <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+<body>
+<div class="header">
+    <a class="logo" href="http://www.magespecialist.it" target="_blank">
+        <img src="images/icon32x32.png"/>
+    </a>
+    <div class="brand-name">
+        <h4>Magento DevTools Inspector</h4>
+        <small><a href="http://www.magespecialist.it" target="_blank">by MageSpecialist</a></small>
+    </div>
+</div>
 
-                <a class="navbar-brand" href="http://www.magespecialist.it" target="_blank">
-                    <img src="images/icon32x32.png" />
-                </a>
-                <div class="navbar-header">
-                    <h4>Magento DevTools <small><a href="http://www.magespecialist.it" target="_blank">by MageSpecialist</a></small></h4>
-
-                </div>
-            </div>
-        </nav>
-
-        <div id="inspected-item" style="display: none"></div>
-        <div id="missing-item" style="display: none">
-            <div class="alert alert-warning" role="alert">Block information non available, turn off blocks cache or FPC.</div>
+<div class="content">
+    <div id="inspected" style="display: none"></div>
+    <div id="missing" style="display: none">
+        <div class="alert alert-warning" role="alert">
+            <h4>Missing block information.</h4>
+            MSP DevTools cannot work correctly with <strong>Full Page Cache</strong> enabled.<br />
+            Please turn it off and retry.
         </div>
-    </body>
+    </div>
+    <div id="no-data" style="display: none">
+        <div class="alert alert-warning" role="alert">
+            <h4>No DevTools information detected here.</h4>
+            Make sure this is a Magento website and you correctly configure MSP DevTools.<br/>
+            Reference guide: <a target="_blank" href="https://github.com/magespecialist/mage-chrome-toolbar">https://github.com/magespecialist/mage-chrome-toolbar</a>
+        </div>
+    </div>
+</div>
+</body>
 </html>

@@ -17,102 +17,92 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-body, th, td {
-    font-size: 11px;
-}
-
 body {
-    padding: 5px;
+    background: #2b2b2b;
 }
 
-.tab-pane {
-    padding: 10px;
-    /*border-left: 1px solid #ddd;*/
-    /*border-right: 1px solid #ddd;*/
-    /*border-bottom: 1px solid #ddd;*/
-    background: #ffffff;
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    height: 64px;
+    background: #000000;
 }
 
-#reload {
-    text-align: center;
-    font-weight: bold;
-    margin: 20px 0;
+.header .logo {
+    margin: 16px;
 }
 
-.runlevel {
-    display: none;
+.header .brand-name h4 {
+    margin: 0;
+    color: #999999;
 }
 
-td.show-details,
-td.icon-column {
-    width: 2em;
-    cursor: pointer;
+.header .brand-name a,
+.header .brand-name a:link,
+.header .brand-name a:visited {
+    color: #dddddd;
 }
 
-.table-responsive {
-    border: 0 !important;
-}
-
-/*table.dataTable,*/
-/*table.dataTable th,*/
-/*table.dataTable td {*/
-    /*-webkit-box-sizing: content-box;*/
-    /*-moz-box-sizing: content-box;*/
-    /*box-sizing: content-box;*/
-/*}*/
-
-table td {
-    word-break: break-all !important;
-    word-wrap: break-word !important;
-}
-
-.nav > li > a {
-    padding: 5px !important;
-    border-radius: 0 !important;
-    font-weight: bold;
-    color: #296891;
-}
-
-table .glyphicon {
-    color: #fff;
-    background: #296891;
-    border-radius: 2px;
-    padding: 4px;
-}
-
-.navbar-brand {
-    padding: 10px;
-}
-
-
-.navbar h4 {
-    padding-top: 5px;
-}
-
-.navbar h4 small {
+.content {
+    padding: 1em;
+    color: #a9b7c6;
     font-size: 12px;
 }
 
-.navbar h4 small a {
-    color: #666666;
-    text-decoration: none;
-    padding-top: 10px;
+.alert {
+    border-radius: 0;
 }
 
-#inspected-item {
-    overflow: scroll;
+#inspected h4 {
+    font-size: 16px;
 }
 
-.phpstorm-links dd {
-    margin-left: 1em;
+#inspected ul {
+    margin: 0;
+    list-style: disc inside none;
+    padding: 0;
 }
 
-.phpstorm-links h4 {
-    font-size: 14px;
+#inspected .definition-list {
+    background: #3c3c3c;
+    padding: 1em;
+    width: 100%;
+}
+#inspected .definition-list .definition-list {
+    padding: 0;
+}
+
+#inspected .definition-row {
+    display: flex;
+}
+
+#inspected .definition-term {
     font-weight: bold;
+    color: #ffffff;
+    display: table-cell;
+    width: 110px;
+    min-width: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.phpstorm-links {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 1em;
+#inspected .definition-data .definition-term {
+    font-weight: normal;
+    margin-right: .5em;
+    width: auto !important;
+    min-width: 0 !important;
+}
+#inspected .definition-data .definition-term:after {
+    content: ':';
+}
+
+#inspected .definition-data {
+    display: table-cell;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-grow: 1;
 }

@@ -16,12 +16,14 @@
  * @copyright  Copyright (c) 2017 Skeeller srl (http://www.magespecialist.it)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-function inspectItem() {
+
+function onItemInspected() {
   function onSelectionChange(el) {
     if (!window.mspDevTools.hasOwnProperty('blocks')) {
       return 'no-data';
     }
 
+    // Locate nearest parent with msp devtools info
     var fetchAttr = function (node, attr) {
       while (node) {
         try {
@@ -65,57 +67,23 @@ function inspectItem() {
   }
 
   chrome.devtools.inspectedWindow.eval('(' + onSelectionChange.toString() + ')($0)', {}, function (res) {
-    var phpStormUrl = '';
+    $('#inspected').css('display', 'none');
+    $('#missing').css('display', 'none');
+    $('#no-data').css('display', 'none');
 
-    if (res === 'missing') {
-      $('#inspected-item').css('display', 'none');
-      $('#missing-item').css('display', 'block');
-    } else if (res === 'no-data') {
-      $('#inspected-item').css('display', 'none');
-      $('#missing-item').css('display', 'none');
+    if (res === 'no-data') {
+      $('#no-data').css('display', 'block');
+    } else if (res === 'missing') {
+      $('#missing').css('display', 'block');
     } else {
-
-      if (res === 'missing') {
-        $('#inspected-item').css('display', 'none');
-        $('#missing-item').css('display', 'block');
-      } else if (res === 'no-data') {
-        $('#inspected-item').css('display', 'none');
-        $('#missing-item').css('display', 'none');
-      } else {
-        $('#inspected-item').css('display', 'block');
-        $('#missing-item').css('display', 'none');
-        $('#inspected-item').html(getFormattedBlockInfo(res));
-      }
-
-      $(window).resize();
+      $('#inspected').css('display', 'block');
+      $('#inspected').html(getBlockInfo(res));
     }
-
-    $('#phpstorm-link').css('display', phpStormUrl ? 'block' : 'none');
-    $('#phpstorm-link').attr('data-phpstorm-url', phpStormUrl);
-
-    $(window).resize();
   });
 }
 
 chrome.devtools.panels.elements.onSelectionChanged.addListener(function () {
-  inspectItem();
+  onItemInspected();
 });
 
-$(function () {
-  inspectItem();
-
-  $('#phpstorm-link').click(function () {
-    $.getJSON($(this).attr('data-phpstorm-url'), function (json) {
-    });
-  });
-
-  $(window).resize();
-});
-
-$(window).resize(function () {
-  var $win = $(window);
-  $('#inspected-item').css('height', '5px');
-
-  var top = $('#inspected-item').offset().top;
-  $('#inspected-item').css('height', ($win.height() - top - 20) + 'px');
-});
+onItemInspected();

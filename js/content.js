@@ -17,17 +17,6 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-var port = chrome.runtime.connect({name: "content"});
-var updateTimeout;
-
-function pingForUpdate() {
-  port.postMessage({
-    type: 'update',
-    to: 'devtools',
-    payload: {}
-  });
-}
-
 function addDocumentInformation() {
   var blocksStack = [];
   $('*').each(function (i, e) {
@@ -61,36 +50,7 @@ function addDocumentInformation() {
   });
 }
 
-port.onMessage.addListener(function (msg, sender, sendResponse) {
-  if (msg.type === 'decorateDom') {
-    addDocumentInformation();
-
-    port.postMessage({
-      type: 'icon',
-      to: 'background',
-      payload: $('[data-mspdevtools]').length > 0 ? 'online' : 'offline'
-    });
-  }
-});
-
 $(function () {
-  pingForUpdate();
+  // Parse html comments on page reload
+  addDocumentInformation();
 });
-
-window.addEventListener("message", function (event) {
-  if (event.source !== window) {
-    return;
-  }
-
-  if (event.data === 'mspDevToolsUpdate') {
-    if (updateTimeout) {
-      window.clearTimeout(updateTimeout);
-    }
-
-    updateTimeout = window.setTimeout(function () {
-      pingForUpdate();
-      updateTimeout = null;
-    }, 100);
-
-  }
-}, false);

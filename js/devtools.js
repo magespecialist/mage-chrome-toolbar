@@ -28,41 +28,6 @@ chrome.devtools.panels.create(
   null
 );
 
-function sendUpdate() {
-  function onUpdateMessage() {
-    return window.mspDevTools;
-  }
-
-  chrome.devtools.inspectedWindow.eval('(' + onUpdateMessage.toString() + ')()', {}, function (res) {
-    var tabId = chrome.devtools.inspectedWindow.tabId;
-
-    port.postMessage({
-      tabId: tabId,
-      type: 'update',
-      to: 'pageinfo',
-      payload: res
-    });
-
-    if (res) {
-      port.postMessage({
-        tabId: tabId,
-        type: 'decorateDom',
-        to: 'content',
-        payload: res
-      });
-    }
-  });
-}
-
-port.onMessage.addListener(function (msg, sender, sendResponse) {
-  if (msg.tabId === chrome.devtools.inspectedWindow.tabId) {
-    if (msg.type === 'update') {
-      sendUpdate();
-
-    }
-  }
-});
-
 chrome.devtools.panels.elements.createSidebarPane(
   "Magento",
   function (sidebar) {
