@@ -1,5 +1,4 @@
-function getFormattedBlockInfo(data)
-{
+function getFormattedBlockInfo(data) {
   var data2 = data;
 
   var phpStormLinks = data['phpstorm_links'];
@@ -12,7 +11,7 @@ function getFormattedBlockInfo(data)
     $phpStormLinks.append($('<h4></h4>').text('PhpStorm Shortcuts'));
     $phpStormLinks.append($dl);
 
-    for (var i=0; i<phpStormLinks.length; i++) {
+    for (var i = 0; i < phpStormLinks.length; i++) {
       var $link = $('<a></a>')
         .attr('href', phpStormLinks[i]['link'])
         .text(phpStormLinks[i]['file']);
