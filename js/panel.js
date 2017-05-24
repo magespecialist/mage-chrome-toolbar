@@ -111,10 +111,10 @@ function renderTableTab(tabId, values) {
     };
 
     if (dataIcon) {
-      style['padding-left'] = '4px';
-      style['padding-right'] = '4px';
-      style['width'] = '24px';
-      style['maxWidth'] = '24px';
+      style['padding-left'] = '1px';
+      style['padding-right'] = '1px';
+      style['width'] = '26px';
+      style['maxWidth'] = '26px';
     }
 
     columns.push({
@@ -151,11 +151,11 @@ function renderTableTab(tabId, values) {
             + '<span class="glyphicon glyphicon-file"></span>'
             + '</a>';
         } else if (colType === 'inspect-block') {
-          val = '<a title="Inspect" class="inspect-block" href="' + val + '">'
+          val = '<a title="Find in DOM" class="inspect-block" href="' + val + '">'
             + '<span class="glyphicon glyphicon-eye-open"></span>'
             + '</a>';
         } else if (colType === 'inspect-ui-component') {
-          val = '<a title="Inspect" class="inspect-ui-component" href="' + val + '">'
+          val = '<a title="Find in DOM" class="inspect-ui-component" href="' + val + '">'
             + '<span class="glyphicon glyphicon-eye-open"></span>'
             + '</a>';
         }

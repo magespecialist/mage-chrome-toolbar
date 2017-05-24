@@ -281,3 +281,14 @@ th[data-icon] {
 .modal-backdrop {
     background-color: #ffffff;
 }
+
+td .glyphicon {
+    background: #8c8c8c;
+    color: #222222;
+    padding: 5px;
+    opacity: .4;
+}
+
+td .glyphicon:hover {
+    opacity: 1;
+}
