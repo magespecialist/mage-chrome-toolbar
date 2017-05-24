@@ -17,6 +17,8 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
+var port = chrome.runtime.connect({name: "content"});
+
 function addDocumentInformation() {
   var blocksStack = [];
   $('*').each(function (i, e) {
@@ -50,7 +52,35 @@ function addDocumentInformation() {
   });
 }
 
+function updateDevToolsInformation()
+{
+  port.postMessage({
+    type: 'update',
+    to: 'devtools',
+    payload: {}
+  });
+}
+
+window.addEventListener("message", function (event) {
+  if (event.source !== window) {
+    return;
+  }
+
+  // Differential update received
+  if (event.data === 'mspDevToolsUpdate') {
+    updateDevToolsInformation();
+  }
+});
+
 $(function () {
   // Parse html comments on page reload
   addDocumentInformation();
+
+  port.postMessage({
+    type: 'icon',
+    to: 'background',
+    payload: $('[data-mspdevtools]').length > 0 ? 'online' : 'offline'
+  });
+
+  updateDevToolsInformation();
 });

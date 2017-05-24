@@ -21,10 +21,12 @@
 <html>
 <head>
     <script src="js/jquery.js"></script>
-    <script src="js/block_info.js"></script>
+    <script src="js/renderer.js"></script>
     <script src="js/inspector.js"></script>
+    <script src="js/sticky.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 </head>
 
@@ -39,12 +41,12 @@
     </div>
 </div>
 
-<div class="content">
+<div class="content msp-inspector">
     <div id="inspected" style="display: none"></div>
     <div id="missing" style="display: none">
         <div class="alert alert-warning" role="alert">
             <h4>Missing block information.</h4>
-            MSP DevTools cannot work correctly with <strong>Full Page Cache</strong> enabled.<br />
+            MSP DevTools cannot work correctly with <strong>Full Page Cache</strong> enabled.<br/>
             Please turn it off and retry.
         </div>
     </div>

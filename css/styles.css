@@ -19,6 +19,29 @@
 
 body {
     background: #2b2b2b;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+}
+
+* {
+    transition: all ease-out 0.1s;
+    border-radius: 0 !important;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+a,
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: none;
 }
 
 .header {
@@ -26,12 +49,24 @@ body {
     align-items: center;
     width: 100%;
     flex-direction: row;
-    height: 64px;
+    height: 52px;
     background: #000000;
 }
 
+body.floating-header {
+    padding-top: 52px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
 .header .logo {
-    margin: 16px;
+    margin: auto 16px;
+}
+
+.header small {
+    font-size: 11px;
 }
 
 .header .brand-name h4 {
@@ -45,40 +80,86 @@ body {
     color: #dddddd;
 }
 
-.content {
-    padding: 1em;
-    color: #a9b7c6;
-    font-size: 12px;
+body.floating-header .header {
+    height: 32px;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
 }
 
-.alert {
-    border-radius: 0;
+body.floating-header .header .logo {
+    margin: auto 8px;
+}
+
+body.floating-header .header .logo img {
+    width: 20px;
+}
+
+body.floating-header .header h4 {
+    display: inline;
+    margin-right: 10px;
+}
+
+body.floating-header .header small {
+    display: none;
+}
+
+.content {
+    color: #a9b7c6;
+}
+
+.msp-inspector.content {
+    padding: 1em;
 }
 
 #inspected h4 {
-    font-size: 16px;
+    margin: 10px 0;
 }
 
-#inspected ul {
+.rendered-property ul {
     margin: 0;
     list-style: disc inside none;
     padding: 0;
 }
 
-#inspected .definition-list {
+.phpstorm-links.rendered-property .definition-list {
+    background: #4a4a4a;
+}
+
+.rendered-property .definition-list {
     background: #3c3c3c;
     padding: 1em;
     width: 100%;
 }
-#inspected .definition-list .definition-list {
+.rendered-property .definition-list .definition-list {
     padding: 0;
 }
 
-#inspected .definition-row {
+.rendered-property .definition-row {
     display: flex;
 }
 
-#inspected .definition-term {
+.compact .rendered-property .definition-row {
+    display: block;
+}
+
+.msp-panel .property-tab .rendered-property .definition-row {
+    margin: 5px 0;
+}
+.msp-panel .property-tab .rendered-property .definition-row  .definition-row {
+    margin: 0;
+}
+
+.msp-panel .rendered-property .definition-term {
+    width: 130px;
+    min-width: 130px;
+}
+
+.msp-panel {
+    font-size: 12px;
+}
+
+.rendered-property .definition-term {
     font-weight: bold;
     color: #ffffff;
     display: table-cell;
@@ -89,20 +170,114 @@ body {
     white-space: nowrap;
 }
 
-#inspected .definition-data .definition-term {
+.compact .rendered-property .definition-term {
+    display: block;
+    width: auto;
+}
+
+.rendered-property .definition-data .definition-term {
     font-weight: normal;
     margin-right: .5em;
     width: auto !important;
     min-width: 0 !important;
 }
-#inspected .definition-data .definition-term:after {
+.rendered-property .definition-data .definition-term:after {
     content: ':';
 }
 
-#inspected .definition-data {
+.rendered-property .definition-data {
     display: table-cell;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     flex-grow: 1;
+}
+
+.compact .rendered-property .definition-data {
+    display: block;
+    padding-left: 2em;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.runlevel {
+    display: none;
+}
+
+.nav-tabs {
+    border-bottom: 0;
+}
+
+.nav-tabs > li > a,
+.nav-tabs > li > a:focus,
+.nav-tabs > li > a:hover {
+    border: 0 !important;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-tabs > li > a:hover {
+    background: #5c5c5c !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    background: #3c3c3c;
+    color: #ffffff;
+}
+
+.tab-content {
+    background: #3c3c3c !important;
+    padding: 8px;
+}
+
+.table td, .table th {
+    font-size: 12px;
+    color: #dddddd;
+}
+
+.table thead tr th {
+    border-bottom: 2px solid #5c5c5c !important;
+}
+
+.table tbody td, .table thead .footable-header th {
+    border-top: 2px solid #454545 !important;
+}
+
+.table th[data-type=int] {
+    text-align: right;
+}
+
+.input-group button {
+    height: 34px;
+}
+
+.input-group input[type=text] {
+    background: #5c5c5c;
+    color: #dddddd;
+    border: 0;
+}
+
+th[data-icon] {
+    padding: 0;
+}
+
+.modal-content {
+    background: #2b2b2b;
+    color: #dddddd;
+}
+
+.modal-body {
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    border-top: 1px solid #454545;
+}
+
+.modal-backdrop {
+    background-color: #ffffff;
 }

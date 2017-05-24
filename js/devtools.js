@@ -21,6 +21,23 @@ var port = chrome.runtime.connect({
   name: "devtools:" + chrome.devtools.inspectedWindow.tabId
 });
 
+function updateDevToolsInformation() {
+  function onUpdateMessage() {
+    return window.mspDevTools;
+  }
+
+  chrome.devtools.inspectedWindow.eval('(' + onUpdateMessage.toString() + ')()', {}, function (res) {
+    var tabId = chrome.devtools.inspectedWindow.tabId;
+
+    port.postMessage({
+      tabId: tabId,
+      type: 'update',
+      to: 'panel',
+      payload: res
+    });
+  });
+}
+
 chrome.devtools.panels.create(
   "Magento",
   null,
@@ -34,3 +51,13 @@ chrome.devtools.panels.elements.createSidebarPane(
     sidebar.setPage('inspector.html');
   }
 );
+
+port.onMessage.addListener(function (msg, sender, sendResponse) {
+  if (msg.tabId === chrome.devtools.inspectedWindow.tabId) {
+    if (msg.type === 'update') {
+      updateDevToolsInformation();
+    }
+  }
+});
+
+updateDevToolsInformation();

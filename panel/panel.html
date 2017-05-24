@@ -1,0 +1,212 @@
+<!--
+/**
+* MageSpecialist
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to info@magespecialist.it so we can send you a copy immediately.
+*
+* @category   MSP
+* @package    MSP_DevTools
+* @copyright  Copyright (c) 2017 Skeeller srl (http://www.magespecialist.it)
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<html>
+<head>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/renderer.js"></script>
+    <script src="../js/inspector.js"></script>
+    <script src="../js/panel.js"></script>
+    <script src="../js/sticky.js"></script>
+    <script src="../js/bootbox.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../footable/js/footable.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../footable/css/footable.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+</head>
+<body>
+<div class="header">
+    <a class="logo" href="http://www.magespecialist.it" target="_blank">
+        <img src="../images/icon32x32.png"/>
+    </a>
+    <div class="brand-name">
+        <h4>Magento DevTools</h4>
+        <small><a href="http://www.magespecialist.it" target="_blank">by MageSpecialist</a></small>
+    </div>
+</div>
+<div class="content msp-panel">
+    <div class="runlevel" id="runlevel-fpc">
+        <div class="alert alert-danger" role="alert">Full Page Cache seems enabled.</div>
+        <br />
+        Debug procedures cannot be run with FPC.<br />
+        Please turn OFF "FPC Cache".<br />
+    </div>
+
+    <div class="runlevel" id="runlevel-no-mage">
+        <div class="alert alert-danger" role="alert">MSP DevTools information <strong>not available</strong>.</div>
+
+        <h4>Please check:</h4>
+        <ul>
+            <li>This is a Magento website</li>
+            <li>You correctly installed MSP_DevTools</li>
+            <li>You enabled MSP_DevTools</li>
+            <li>You are within the allowed address range</li>
+        </ul>
+
+        <h4>Full installation and configuration guide:</h4>
+        <a target="_blank" href="https://github.com/magespecialist/mage-chrome-toolbar">https://github.com/magespecialist/mage-chrome-toolbar</a>
+
+        <h4>How to install the Magento module:</h4>
+        This extension needs <strong>MSP_DevTools</strong> to be installed and configured in your Magento website.<br />
+
+        <h5>Magento 1:</h5>
+        Download and copy in your Magento root path the MSP_DevTools module.<br />
+        Source code is available on GitHub: <a target="_blank" href="https://github.com/magespecialist/m1-MSP_DevTools">https://github.com/magespecialist/m1-MSP_DevTools</a>
+
+        <h5>Magento 2:</h5>
+        You can install using composer: <strong>composer require msp/devtools</strong><br />
+        Source code is available on GitHub: <a target="_blank" href="https://github.com/magespecialist/m2-MSP_DevTools">https://github.com/magespecialist/m2-MSP_DevTools</a>
+    </div>
+
+    <div class="runlevel" id="runlevel-online">
+        <ul class="nav nav-tabs" id="main_tabs">
+            <li class="active"><a data-toggle="tab" href="#panel-general">General</a></li>
+            <li><a data-toggle="tab" href="#panel-design">Design</a></li>
+            <li><a data-toggle="tab" href="#panel-events">Observers</a></li>
+            <li><a data-toggle="tab" href="#panel-blocks">Blocks</a></li>
+            <li><a data-toggle="tab" href="#panel-ui-components">UI</a></li>
+            <li><a data-toggle="tab" href="#panel-profiler">Profiler</a></li>
+            <li><a data-toggle="tab" href="#panel-plugins">Plugins</a></li>
+            <li><a data-toggle="tab" href="#panel-queries">Queries</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="fade in tab-pane active property-tab" id="panel-general">
+                <div class="mage-v1 mage-v2">
+                    <div class="property"></div>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane property-tab" id="panel-design">
+                <div class="mage-v1 mage-v2">
+                    <div class="property"></div>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-events">
+                <div class="mage-v1 mage-v2">
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-explode="true" data-index="name">Event Name</th>
+                            <th data-width="80px" data-index="time" data-type="int" data-sorted="true" data-direction="DESC">ms</th>
+                            <th data-width="80px" data-index="count" data-type="int">Count</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-blocks">
+                <div class="mage-v1 mage-v2">
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-icon="true" data-index="phpstorm_url" data-type="phpstorm"></th>
+                            <th data-icon="true" data-index="id" data-type="inspect-block"></th>
+                            <th data-explode="true" data-index="name">Block Name</th>
+                            <th data-width="120px" data-index="proper_time" data-type="int" data-sorted="true" data-direction="DESC">ms (proper)</th>
+                            <th data-width="120px" data-index="time" data-type="int">ms (total)</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-ui-components">
+                <div class="mage-v2">
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-icon="true" data-index="id" data-type="inspect-ui-component"></th>
+                            <th data-explode="true" data-index="component">Component</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="alert alert-danger mage-v1" role="alert">
+                    This feature is only available on DevTools for <strong>Magento 2</strong>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-profiler">
+                <div class="mage-v1 mage-v2">
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-explode="true" data-index="name">Name</th>
+                            <th data-width="120px" data-index="proper_time" data-type="int" data-sorted="true" data-direction="DESC">ms (proper)</th>
+                            <th data-width="120px" data-index="time" data-type="int">ms (total)</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-plugins">
+                <div class="mage-v2">
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-icon="true" data-index="phpstorm_url" data-type="phpstorm"></th>
+                            <th  data-explode="true" data-index="class_method" data-sort="desc">Type</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="alert alert-danger mage-v1" role="alert">
+                    This feature is only available on DevTools for <strong>Magento 2</strong>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-queries">
+                <div class="mage-v2">
+                    <div id="mage-v2-query-profiler-warning" class="alert alert-warning" role="alert">
+                        <strong>You should set a new key for $config array in file app/etc/env.php</strong><br/>
+                        <br />
+                        <pre>$config[db][connection][default][profiler] = 1</pre>
+                    </div>
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-explode="true" data-index="sql">SQL</th>
+                            <th data-width="80px" data-index="grade" >Grade</th>
+                            <th data-width="60px" data-index="time" data-sorted="true" data-direction="DESC">ms</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="alert alert-danger mage-v1" role="alert">
+                    This feature is only available on DevTools for <strong>Magento 2</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
