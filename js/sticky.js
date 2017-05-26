@@ -22,12 +22,12 @@ $(function () {
 
   $(window).scroll(function () {
 
-    if ($(window).scrollTop() > 24) {
-      if (!$body.hasClass('floating-header')) {
-        $body.addClass('floating-header');
+    if ($(window).scrollTop() > 32) {
+      if (!$body.hasClass('sticky-header')) {
+        $body.addClass('sticky-header');
       }
     } else {
-      $body.removeClass('floating-header');
+      $body.removeClass('sticky-header');
     }
   });
 });

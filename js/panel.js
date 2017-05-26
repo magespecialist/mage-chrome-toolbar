@@ -107,7 +107,8 @@ function renderTableTab(tabId, values) {
       'whiteSpace': 'nowrap',
       'width': dataWidth,
       'maxWidth': dataWidth,
-      'textAlign': (dataType === 'int') ? 'right' : 'left'
+      'textAlign': (dataType === 'int') ? 'right' : 'left',
+      'vertical-align': 'middle'
     };
 
     if (dataIcon) {
