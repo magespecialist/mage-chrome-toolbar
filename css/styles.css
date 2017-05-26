@@ -292,3 +292,9 @@ td .glyphicon {
 td .glyphicon:hover {
     opacity: 1;
 }
+
+.popup {
+    color: #FFF;
+    padding: 1rem;
+    min-width: 130px;
+}
