@@ -84,15 +84,21 @@ a:hover {
     font-size: 11px;
 }
 
-.header .brand-name h4 {
-    margin: 0;
-    color: #999999;
+.header .brand-name {
+    display: flex;
 }
 
+.header .brand-name h4 {
+    margin: 0;
+    color: #fafafa;
+}
+.header .brand-name small {
+    padding-left: 0.5em;
+}
 .header .brand-name a,
 .header .brand-name a:link,
 .header .brand-name a:visited {
-    color: #dddddd;
+    color: #fafafa;
 }
 
 body.floating-header .header {
@@ -309,7 +315,7 @@ td .glyphicon:hover {
 }
 
 .popup {
-    color: #FFF;
+    background-color: #fff;
     padding: 1rem;
     min-width: 130px;
 }
