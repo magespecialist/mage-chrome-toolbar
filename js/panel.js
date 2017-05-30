@@ -107,20 +107,22 @@ function renderTableTab(tabId, values) {
       'whiteSpace': 'nowrap',
       'width': dataWidth,
       'maxWidth': dataWidth,
-      'textAlign': (dataType === 'int') ? 'right' : 'left'
+      'textAlign': (dataType === 'int') ? 'right' : 'left',
+      'vertical-align': 'middle'
     };
 
     if (dataIcon) {
-      style['padding-left'] = '1px';
-      style['padding-right'] = '1px';
-      style['width'] = '26px';
-      style['maxWidth'] = '26px';
+      style['padding-left'] = '4px';
+      style['padding-right'] = '4px';
+      style['width'] = '30px';
+      style['maxWidth'] = '30px';
     }
 
     columns.push({
       'name': colIndex,
       'title': label,
       'filterable': !dataIcon,
+      'sortable': !dataIcon,
       'style': style
     });
   }
