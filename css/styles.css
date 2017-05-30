@@ -343,5 +343,5 @@ td.footable-sortable:hover>span.fooicon, th.footable-sortable:hover>span.fooicon
     padding: 15px;
 }
 tbody tr:nth-child(odd) {
-    background-color: #616161;
+    background-color: #555555;
 }
