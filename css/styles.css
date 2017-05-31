@@ -21,7 +21,7 @@ body {
     background: #212121;
     margin: 0;
     padding: 0;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 * {
@@ -41,6 +41,7 @@ a:visited {
     text-decoration: none;
 }
 a:hover {
+    opacity: .7;
     text-decoration: underline;
 }
 
@@ -81,7 +82,7 @@ a:hover {
 }
 
 .header small {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .header .brand-name {
@@ -147,6 +148,12 @@ body.floating-header .header h4 {
     background: #4a4a4a;
 }
 
+.phpstorm-links a,
+.phpstorm-links a:link,
+.phpstorm-links a:visited {
+    text-decoration: underline;
+}
+
 .rendered-property .definition-list {
     background: #424242;
     padding: 1em;
@@ -174,6 +181,14 @@ body.floating-header .header h4 {
 .msp-panel .rendered-property .definition-term {
     width: 130px;
     min-width: 130px;
+}
+
+.msp-panel .runlevel {
+    margin: 1em;
+}
+
+#runlevel-online {
+    margin: 0;
 }
 
 .msp-panel {
@@ -235,7 +250,6 @@ body.floating-header .header h4 {
     border: 0 !important;
     color: #fafafa;
     font-weight: bold;
-    text-decoration: none;
 }
 
 .nav-tabs > li > a:hover {

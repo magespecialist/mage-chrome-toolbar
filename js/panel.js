@@ -26,34 +26,38 @@ port.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.tabId === chrome.devtools.inspectedWindow.tabId) {
     if (msg.type === 'update') {
       if (msg.payload) {
-        if (!$.isEmptyObject(msg.payload['blocks'])) {
-          setRunlevel('online');
-
-          $('.mage-v1').css('display', 'none');
-          $('.mage-v2').css('display', 'none');
-
-          if (msg.payload['version'] === 1) {
-            $('.mage-v1').css('display', 'block');
-          } else if (msg.payload['version'] === 2) {
-            $('.mage-v2').css('display', 'block');
-          }
-
-          $('#mage-v2-query-profiler-warning').css('display',
-            (!msg.payload['queries'] || !msg.payload['queries'].length) ?
-              'block' : 'none'
-          );
-
-          renderPropertyTab('general', msg.payload['general']);
-          renderPropertyTab('design', msg.payload['design']);
-          renderTableTab('events', msg.payload['events']);
-          renderTableTab('blocks', msg.payload['blocks']);
-          renderTableTab('ui-components', msg.payload['uiComponents']);
-          renderTableTab('profiler', msg.payload['profiler']);
-          renderTableTab('logs', msg.payload['profiler']);
-          renderTableTab('plugins', msg.payload['plugins']);
-          renderTableTab('queries', msg.payload['queries']);
+        if (!msg.payload['_protocol'] || (msg.payload['_protocol'] < 2)) {
+          setRunlevel('update');
         } else {
-          setRunlevel('fpc');
+          if (!$.isEmptyObject(msg.payload['blocks'])) {
+            setRunlevel('online');
+
+            $('.mage-v1').css('display', 'none');
+            $('.mage-v2').css('display', 'none');
+
+            if (msg.payload['version'] === 1) {
+              $('.mage-v1').css('display', 'block');
+            } else if (msg.payload['version'] === 2) {
+              $('.mage-v2').css('display', 'block');
+            }
+
+            $('#mage-v2-query-profiler-warning').css('display',
+              (!msg.payload['queries'] || !msg.payload['queries'].length) ?
+                'block' : 'none'
+            );
+
+            renderPropertyTab('general', msg.payload['general']);
+            renderPropertyTab('design', msg.payload['design']);
+            renderTableTab('events', msg.payload['events']);
+            renderTableTab('blocks', msg.payload['blocks']);
+            renderTableTab('ui-components', msg.payload['uiComponents']);
+            renderTableTab('profiler', msg.payload['profiler']);
+            renderTableTab('logs', msg.payload['profiler']);
+            renderTableTab('plugins', msg.payload['plugins']);
+            renderTableTab('queries', msg.payload['queries']);
+          } else {
+            setRunlevel('fpc');
+          }
         }
       } else {
         setRunlevel('no-mage');
