@@ -28,7 +28,7 @@ function addDocumentInformation() {
       $(this).contents().each(function (i, e) {
         if (this.nodeType === 8) {
           var nodeValue = this.nodeValue;
-          var m = nodeValue.match(/\s*(\/?)MSPDEVTOOLS\[(\w+)\]\s*/);
+          var m = nodeValue.match(/\s*(\/?)START\[(\w+)\]\s*/);
 
           if (m) {
             var close = m[1];
