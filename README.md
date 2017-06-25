@@ -53,6 +53,32 @@ Add the following line to your `.haccess` file:
 ## How does it work?
 You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
 
+#### Enabling SQL query feature on Magento 2:
+
+Edit `app/etc/env.php` file adding the following key: `$config[db][connection][default][profiler] = 1`
+
+Example:
+```
+...
+  ),
+  'db' => 
+  array (
+    'table_prefix' => '',
+    'connection' => 
+    array (
+      'default' => 
+      array (
+        'host' => 'localhost',
+        ...
+        'profiler' => '1',
+      ),
+    ),
+  ),
+  'resource' => 
+  array (
+...
+```
+
 #### Inspector integration
 <img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/main2.png" width="480" />
 
