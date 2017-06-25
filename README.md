@@ -50,9 +50,6 @@ Add the following line to your `.haccess` file:
 
 **Known Magento bug:** In Magento 2.1.3 (and probably previous version) you may have problems with profiler and ajax calls due to a core bug. If you are getting this kind of problem you should use the "index.php" modification way.
 
-## How does it work?
-You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
-
 #### Enabling SQL query feature on Magento 2:
 
 Edit `app/etc/env.php` file adding the following key: `$config[db][connection][default][profiler] = 1`
@@ -78,6 +75,9 @@ Example:
   array (
 ...
 ```
+
+## How does it work?
+You can access both **Global Page Information** and **Item Information** through **Chrome Inspector**.
 
 #### Inspector integration
 <img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/main2.png" width="480" />
