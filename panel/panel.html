@@ -90,6 +90,8 @@
             <li><a data-toggle="tab" href="#panel-design">Design</a></li>
             <li><a data-toggle="tab" href="#panel-events">Observers</a></li>
             <li><a data-toggle="tab" href="#panel-blocks">Blocks</a></li>
+            <li><a data-toggle="tab" href="#panel-data-models">Data Models</a></li>
+            <li><a data-toggle="tab" href="#panel-collections">Collections</a></li>
             <li><a data-toggle="tab" href="#panel-ui-components">UI</a></li>
             <li><a data-toggle="tab" href="#panel-profiler">Profiler</a></li>
             <li><a data-toggle="tab" href="#panel-plugins">Plugins</a></li>
@@ -132,6 +134,35 @@
                             <th data-explode="true" data-index="name">Block Name</th>
                             <th data-width="120px" data-index="proper_time" data-type="int" data-sorted="true" data-direction="DESC">ms (proper)</th>
                             <th data-width="120px" data-index="time" data-type="int">ms (total)</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-data-models">
+                <div class="mage-v2">
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-explode="true" data-index="model">Data Model</th>
+                            <th data-width="80px" data-index="count" data-type="int" data-sorted="true" data-direction="DESC">Count</th>
+                        </tr>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="fade tab-pane" id="panel-collections">
+                <div class="mage-v2">
+                    <table class="table" data-sorting="true" data-filtering="true">
+                        <thead>
+                        <tr>
+                            <th data-explode="true" data-index="collection">Collection</th>
+                            <th data-width="80px" data-index="items" data-type="int">Items</th>
+                            <th data-width="80px" data-index="count" data-type="int" data-sorted="true" data-direction="DESC">Count</th>
                         </tr>
                         </thead>
 

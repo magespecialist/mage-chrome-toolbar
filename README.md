@@ -90,6 +90,8 @@ From the main panel you can see information from:
 * Request parameters
 * Layout and Layout updates
 * Observers
+* Data Models inspector
+* Collections inspector
 * Blocks, Containers, uiComponents
 * Profiler
 
@@ -104,6 +106,12 @@ From the main panel you can see information from:
 
 #### Profiler information:
 <img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/5.png" width="480" />
+
+#### Data Models information:
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/6.png" width="480" />
+
+#### Collections information:
+<img src="https://raw.githubusercontent.com/magespecialist/mage-chrome-toolbar/master/screenshots/7.png" width="480" />
 
 ### Item Information
 Magento Chrome Toolbar is integrated with Chrome Inspector.

@@ -26,7 +26,7 @@ port.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.tabId === chrome.devtools.inspectedWindow.tabId) {
     if (msg.type === 'update') {
       if (msg.payload) {
-        if (!msg.payload['_protocol'] || (msg.payload['_protocol'] < 2)) {
+        if (!msg.payload['_protocol'] || (msg.payload['_protocol'] < 3)) {
           setRunlevel('update');
         } else {
           if (!$.isEmptyObject(msg.payload['blocks'])) {
@@ -50,6 +50,8 @@ port.onMessage.addListener(function (msg, sender, sendResponse) {
             renderPropertyTab('design', msg.payload['design']);
             renderTableTab('events', msg.payload['events']);
             renderTableTab('blocks', msg.payload['blocks']);
+            renderTableTab('data-models', msg.payload['data-models']);
+            renderTableTab('collections', msg.payload['collections']);
             renderTableTab('ui-components', msg.payload['uiComponents']);
             renderTableTab('profiler', msg.payload['profiler']);
             renderTableTab('logs', msg.payload['profiler']);
