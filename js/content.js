@@ -20,35 +20,36 @@
 var port = chrome.runtime.connect({name: "content"});
 
 function addDocumentInformation() {
-  var blocksStack = [];
-  $('*').each(function (i, e) {
-    // This avoids security exceptions with iframes
+  var blocks = [];
 
-    try {
-      $(this).contents().each(function (i, e) {
-        if (this.nodeType === 8) {
-          var nodeValue = this.nodeValue;
-          var m = nodeValue.match(/\s*(\/?)(?:MSPDEVTOOLS|(?:START|END)_MSPDEV)\[(\w+)\]\s*/);
+  var markers = document.evaluate('//comment()[contains(., \"START_MSPDEV\[\")]', document, null, XPathResult.ANY_TYPE, null);
+  while (true) {
+    var startMarker = markers.iterateNext();
 
-          if (m) {
-            var close = m[1];
-            var blockId = m[2];
+    if (startMarker) {
+      var endMarkerContent = startMarker.textContent.replace('START_MSPDEV', 'END_MSPDEV').trim();
 
-            if (close) {
-              blocksStack.pop();
-            } else {
-              blocksStack.push(blockId);
-            }
-          }
-        } else if (this.nodeType === 1) {
-          if (blocksStack.length > 0) {
-            blockId = blocksStack[blocksStack.length - 1];
-            $(this).attr('data-mspdevtools', blockId);
-          }
+      var endMarker = document.evaluate('//comment()[contains(., \"' + endMarkerContent + '\")]', document, null, XPathResult.ANY_TYPE, null).iterateNext();
+      if (endMarker) {
+        var m = endMarker.textContent.match(/END_MSPDEV\[(\w+)\]/);
+        if (m) {
+          var blockId = m[1];
+          var section = $(startMarker).nextUntil(endMarker);
+
+          blocks.push({
+            'blockId': blockId,
+            'section': section
+          });
         }
-      });
-    } catch (e) {
+      }
+    } else {
+      break;
     }
+  }
+
+  blocks.forEach(function(block) {
+    $(block['section']).attr('data-mspdevtools', block['blockId']);
+    $(block['section']).find('*').attr('data-mspdevtools', block['blockId']);
   });
 }
 
