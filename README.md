@@ -24,7 +24,6 @@ This package is also available on **packagist** for Magento 1 composer installat
 * From your CLI run: `composer require msp/devtools`
 * Flush your cache.
 * Turn OFF **Full Page Cache** while you are using DevTools.
-* Enable MSP_Common and MSP_DevTools modules: `php bin/magento module:enable MSP_Common MSP_DevTools`
 * Upgrade database data & schema: `php bin/magento setup:upgrade`
 * Open Magento backend and go to `Stores > Settings > Configuration > MageSpecialist > DevTools`.
 * Enable devtools and set IP restrictions.
