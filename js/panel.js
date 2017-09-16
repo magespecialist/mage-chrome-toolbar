@@ -133,6 +133,10 @@ function renderTableTab(tabId, values) {
     });
   }
 
+  if (!values) {
+    values = {};
+  }
+
   Object.keys(values).forEach(function (k) {
     var row = {};
 
