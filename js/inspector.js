@@ -66,7 +66,7 @@ function onItemInspected() {
     return {};
   }
 
-  chrome.devtools.inspectedWindow.eval('(' + onSelectionChange.toString() + ')($0)', {}, function (res) {
+  browser.devtools.inspectedWindow.eval('(' + onSelectionChange.toString() + ')($0)', {}, function (res) {
     $('#inspected').css('display', 'none');
     $('#missing').css('display', 'none');
     $('#no-data').css('display', 'none');
@@ -82,7 +82,7 @@ function onItemInspected() {
   });
 }
 
-chrome.devtools.panels.elements.onSelectionChanged.addListener(function () {
+browser.devtools.panels.elements.onSelectionChanged.addListener(function () {
   onItemInspected();
 });
 

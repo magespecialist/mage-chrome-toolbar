@@ -1,26 +1,28 @@
-<!--
-/**
-* MageSpecialist
-*
-* NOTICE OF LICENSE
-*
-* This source file is subject to the Open Software License (OSL 3.0)
-* that is bundled with this package in the file LICENSE.txt.
-* It is also available through the world-wide-web at this URL:
-* http://opensource.org/licenses/osl-3.0.php
-* If you did not receive a copy of the license and are unable to
-* obtain it through the world-wide-web, please send an email
-* to info@magespecialist.it so we can send you a copy immediately.
-*
-* @category   MSP
-* @package    MSP_DevTools
-* @copyright  Copyright (c) 2017 Skeeller srl (http://www.magespecialist.it)
-* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
-*/
--->
+<!DOCTYPE html>
 <html>
 <head>
+    <!--
+    /**
+     * MageSpecialist
+     *
+     * NOTICE OF LICENSE
+     *
+     * This source file is subject to the Open Software License (OSL 3.0)
+     * that is bundled with this package in the file LICENSE.txt.
+     * It is also available through the world-wide-web at this URL:
+     * http://opensource.org/licenses/osl-3.0.php
+     * If you did not receive a copy of the license and are unable to
+     * obtain it through the world-wide-web, please send an email
+     * to info@magespecialist.it so we can send you a copy immediately.
+     *
+     * @category   MSP
+     * @package    MSP_DevTools
+     * @copyright  Copyright (c) 2017 Skeeller srl (http://www.magespecialist.it)
+     * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+     */
+     -->
     <meta charset="utf-8">
+    <script src="../js/browser.js"></script>
     <script src="../js/jquery.js"></script>
     <script src="../js/renderer.js"></script>
     <script src="../js/inspector.js"></script>
@@ -114,7 +116,7 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-explode="true" data-index="name">Event Name</th>
+                            <th data-width="calc(100% - 160px)" data-explode="true" data-index="name">Event Name</th>
                             <th data-width="80px" data-index="time" data-type="int" data-sorted="true" data-direction="DESC">ms</th>
                             <th data-width="80px" data-index="count" data-type="int">Count</th>
                         </tr>
@@ -129,9 +131,9 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-icon="true" data-index="phpstorm_url" data-type="phpstorm"></th>
-                            <th data-icon="true" data-index="id" data-type="inspect-block"></th>
-                            <th data-explode="true" data-index="name">Block Name</th>
+                            <th data-width="20px" data-icon="true" data-index="phpstorm_url" data-type="phpstorm"></th>
+                            <th data-width="20px" data-icon="true" data-index="id" data-type="inspect-block"></th>
+                            <th data-width="calc(100% - 180px)" data-explode="true" data-index="name">Block Name</th>
                             <th data-width="120px" data-index="proper_time" data-type="int" data-sorted="true" data-direction="DESC">ms (proper)</th>
                             <th data-width="120px" data-index="time" data-type="int">ms (total)</th>
                         </tr>
@@ -146,7 +148,7 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-explode="true" data-index="model">Data Model</th>
+                            <th data-width="calc(100% - 80px)" data-explode="true" data-index="model">Data Model</th>
                             <th data-width="80px" data-index="count" data-type="int" data-sorted="true" data-direction="DESC">Count</th>
                         </tr>
                         </thead>
@@ -163,7 +165,7 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-explode="true" data-index="collection">Collection</th>
+                            <th data-width="calc(100% - 160px)" data-explode="true" data-index="collection">Collection</th>
                             <th data-width="80px" data-index="items" data-type="int">Items</th>
                             <th data-width="80px" data-index="count" data-type="int" data-sorted="true" data-direction="DESC">Count</th>
                         </tr>
@@ -181,8 +183,8 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-icon="true" data-index="id" data-type="inspect-ui-component"></th>
-                            <th data-explode="true" data-index="component">Component</th>
+                            <th data-width="20px" data-icon="true" data-index="id" data-type="inspect-ui-component"></th>
+                            <th data-width="calc(100% - 20px)" data-explode="true" data-index="component">Component</th>
                         </tr>
                         </thead>
 
@@ -198,7 +200,7 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-explode="true" data-index="name">Name</th>
+                            <th data-width="calc(100% - 240px)" data-explode="true" data-index="name">Name</th>
                             <th data-width="120px" data-index="proper_time" data-type="int" data-sorted="true" data-direction="DESC">ms (proper)</th>
                             <th data-width="120px" data-index="time" data-type="int">ms (total)</th>
                         </tr>
@@ -213,8 +215,8 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-icon="true" data-index="phpstorm_url" data-type="phpstorm"></th>
-                            <th  data-explode="true" data-index="class_method" data-sort="desc">Type</th>
+                            <th data-width="20px" data-icon="true" data-index="phpstorm_url" data-type="phpstorm"></th>
+                            <th data-width="calc(100% - 240px)" data-explode="true" data-index="class_method" data-sort="desc">Type</th>
                         </tr>
                         </thead>
 
@@ -235,7 +237,7 @@
                     <table class="table" data-sorting="true" data-filtering="true">
                         <thead>
                         <tr>
-                            <th data-explode="true" data-index="sql">SQL</th>
+                            <th data-width="calc(100% - 140px)" data-explode="true" data-index="sql">SQL</th>
                             <th data-width="80px" data-index="grade" >Grade</th>
                             <th data-width="60px" data-index="time" data-sorted="true" data-direction="DESC">ms</th>
                         </tr>

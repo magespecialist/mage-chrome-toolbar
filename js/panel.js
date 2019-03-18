@@ -19,11 +19,11 @@
 
 var dataTables = {};
 
-var port = chrome.runtime.connect({
-  name: "panel:" + chrome.devtools.inspectedWindow.tabId
+var port = browser.runtime.connect({
+  name: "panel:" + browser.devtools.inspectedWindow.tabId
 });
 port.onMessage.addListener(function (msg, sender, sendResponse) {
-  if (msg.tabId === chrome.devtools.inspectedWindow.tabId) {
+  if (msg.tabId === browser.devtools.inspectedWindow.tabId) {
     if (msg.type === 'update') {
       if (msg.payload) {
         if (!msg.payload['_protocol'] || (msg.payload['_protocol'] < 3)) {
@@ -91,10 +91,6 @@ function renderTableTab(tabId, values) {
     var dataIcon = $($colsTd[i]).attr('data-icon');
     var dataExplode = $($colsTd[i]).attr('data-explode');
     var label = $($colsTd[i]).html();
-
-    if (!dataWidth) {
-      dataWidth = 0;
-    }
 
     if (!colIndex) {
       continue;
@@ -196,13 +192,13 @@ function renderTableTab(tabId, values) {
   $('#panel-' + tabId + ' a.inspect-block').click(function (e) {
     e.preventDefault();
     var blockId = $(this).attr('href');
-    chrome.devtools.inspectedWindow.eval("inspect(jQuery('[data-mspdevtools=" + blockId + "]')[0])");
+    browser.devtools.inspectedWindow.eval("inspect(jQuery('[data-mspdevtools=" + blockId + "]')[0])");
   });
 
   $('#panel-' + tabId + ' a.inspect-ui-component').click(function (e) {
     e.preventDefault();
     var blockId = $(this).attr('href');
-    chrome.devtools.inspectedWindow.eval("inspect(jQuery('[data-mspdevtools-ui=" + blockId + "]')[0])");
+    browser.devtools.inspectedWindow.eval("inspect(jQuery('[data-mspdevtools-ui=" + blockId + "]')[0])");
   });
 
   $('#panel-' + tabId + ' a.show-details').click(function (e) {
@@ -217,7 +213,7 @@ function renderTableTab(tabId, values) {
 
 $(function () {
   port.postMessage({
-    tabId: chrome.devtools.inspectedWindow.tabId,
+    tabId: browser.devtools.inspectedWindow.tabId,
     to: 'devtools',
     type: 'update',
     payload: {}
