@@ -78,8 +78,10 @@ function getPhpStormLinks(data) {
 
     for (var i = 0; i < phpStormLinks.length; i++) {
       var $link = $('<a></a>')
+        .addClass('phpstormlink')
         .attr('href', phpStormLinks[i]['link'])
         .text(phpStormLinks[i]['file']);
+
 
       var $dr = $('<div></div>').addClass('definition-row');
       var $dd = $('<div></div>').addClass('definition-data');
