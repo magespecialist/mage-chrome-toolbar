@@ -24,13 +24,14 @@
   ],
   "background": {
     "scripts": [
+      "js/browser.js", 
       "js/background.js"
     ]
   },
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["js/jquery.js", "js/content.js"]
+      "js": ["js/browser.js", "js/jquery.js", "js/content.js"]
     }
   ],
   "devtools_page": "devtools.html"
