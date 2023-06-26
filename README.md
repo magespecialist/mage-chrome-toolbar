@@ -32,22 +32,11 @@ This package is also available on **packagist** for Magento 1 composer installat
 > Source code available on GitHub: https://github.com/magespecialist/m2-MSP_DevTools
 
 #### Enabling profiler feature on Magento 2:
-If you wish to enable the profiler feature you need to set the `MAGE_PROFILER` server variable to `MSP\DevTools\Profiler\Driver\Standard\Output\DevTools`.
-You can do it in several ways:
+If you wish to enable the profiler feature, execute:
 
-##### Editing `index.php`:
-Add the following line at the very beginning on `index.php` and `pub/index.php` file:
-
-`$_SERVER['MAGE_PROFILER'] = [
-    'drivers' => [['output' => 'MSP\DevTools\Profiler\Driver\Standard\Output\DevTools']]
-];`
- 
-##### Editing `.htaccess` file
-Add the following line to your `.haccess` file:
-
-`SetEnv MAGE_PROFILER MSP\DevTools\Profiler\Driver\Standard\Output\DevTools`
-
-**Known Magento bug:** In Magento 2.1.3 (and probably previous version) you may have problems with profiler and ajax calls due to a core bug. If you are getting this kind of problem you should use the "index.php" modification way.
+```
+bin/magento dev:profiler:enable 'MSP\DevTools\Profiler\Driver\Standard\Output\DevTools'
+```
 
 #### Enabling SQL query feature on Magento 2:
 
