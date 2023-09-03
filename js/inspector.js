@@ -66,7 +66,7 @@ function onItemInspected() {
     return {};
   }
 
-  chrome.devtools.inspectedWindow.eval('(' + onSelectionChange.toString() + ')($0)', {}, function (res) {
+  browser.devtools.inspectedWindow.eval('(' + onSelectionChange.toString() + ')($0)', {}, function (res) {
     $('#inspected').css('display', 'none');
     $('#missing').css('display', 'none');
     $('#no-data').css('display', 'none');
@@ -78,11 +78,15 @@ function onItemInspected() {
     } else {
       $('#inspected').css('display', 'block');
       $('#inspected').html(getBlockInfo(res));
+      $('.phpstormlink').click(function(e) {
+          e.preventDefault();
+          fetch(e.target.href);
+      })
     }
   });
 }
 
-chrome.devtools.panels.elements.onSelectionChanged.addListener(function () {
+browser.devtools.panels.elements.onSelectionChanged.addListener(function () {
   onItemInspected();
 });
 

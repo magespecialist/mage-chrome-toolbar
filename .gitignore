@@ -1,4 +1,5 @@
 .git
-./*.DS_Store
+./*DS_Store
 .idea
-
+web-ext-artifacts/
+.web-extension-id

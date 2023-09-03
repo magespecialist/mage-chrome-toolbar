@@ -17,17 +17,18 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-var port = chrome.runtime.connect({
-  name: "devtools:" + chrome.devtools.inspectedWindow.tabId
-});
 
+var port = browser.runtime.connect({
+  name: "devtools:" + browser.devtools.inspectedWindow.tabId
+});
+// alert(port);
 function updateDevToolsInformation() {
   function onUpdateMessage() {
     return window.mspDevTools;
   }
 
-  chrome.devtools.inspectedWindow.eval('(' + onUpdateMessage.toString() + ')()', {}, function (res) {
-    var tabId = chrome.devtools.inspectedWindow.tabId;
+  browser.devtools.inspectedWindow.eval('(' + onUpdateMessage.toString() + ')()', {}, function (res) {
+    var tabId = browser.devtools.inspectedWindow.tabId;
 
     port.postMessage({
       tabId: tabId,
@@ -38,14 +39,13 @@ function updateDevToolsInformation() {
   });
 }
 
-chrome.devtools.panels.create(
+browser.devtools.panels.create(
   "Magento",
-  null,
-  "panel/panel.html",
-  null
+  'images/icon.png',
+  "/panel/panel.html"
 );
 
-chrome.devtools.panels.elements.createSidebarPane(
+browser.devtools.panels.elements.createSidebarPane(
   "Magento",
   function (sidebar) {
     sidebar.setPage('inspector.html');
@@ -53,7 +53,7 @@ chrome.devtools.panels.elements.createSidebarPane(
 );
 
 port.onMessage.addListener(function (msg, sender, sendResponse) {
-  if (msg.tabId === chrome.devtools.inspectedWindow.tabId) {
+  if (msg.tabId === browser.devtools.inspectedWindow.tabId) {
     if (msg.type === 'update') {
       updateDevToolsInformation();
     }

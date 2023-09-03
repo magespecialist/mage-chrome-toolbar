@@ -17,7 +17,7 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-var port = chrome.runtime.connect({name: "content"});
+var port = browser.runtime.connect({name: "content"});
 
 function addDocumentInformation() {
   var blocks = [];

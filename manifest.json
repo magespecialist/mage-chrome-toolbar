@@ -3,7 +3,7 @@
 
   "name": "MageSpecialist DevTools for Magento",
   "description": "This extension can be used with MSP_DevTools module for Magento",
-  "version": "3.3.3",
+  "version": "3.3.4",
 
   "icons": {
     "16": "images/icon16x16.png",
@@ -22,13 +22,14 @@
   ],
   "background": {
     "scripts": [
+      "js/browser.js", 
       "js/background.js"
     ]
   },
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["js/jquery.js", "js/content.js"]
+      "js": ["js/browser.js", "js/jquery.js", "js/content.js"]
     }
   ],
   "devtools_page": "devtools.html"
